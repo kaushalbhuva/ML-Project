@@ -15,7 +15,7 @@ import csv
 #Op = pd.read_csv('gt.csv',index_col='Id')
 
 #__________READING test_kb.csv file_________________________________________________
-ele = pd.read_csv('test_kb.csv')                 # store elements in ele
+ele = pd.read_csv('test_kb2.csv')                 # store elements in ele
 elematrix= ele.as_matrix()                       # converting elements into matrix form
 
 #print(elematrix)
@@ -80,7 +80,7 @@ for k in np.arange(0,new_col):
 print("\n Data normalization done")
 
 #__________READING gt.csv file_________________________________________________
-ele2 = pd.read_csv('gt_kb.csv')                         # store elements in ele
+ele2 = pd.read_csv('gt_kb2.csv')                         # store elements in ele
 elematrix2= ele2.as_matrix()                         # converting elements into matrix form
 my_row2 = elematrix2.shape[0]                        # data matrix rows
 my_col2 = elematrix2.shape[1]                        # data matrix columns
@@ -139,7 +139,7 @@ Op_series_rfc = pd.Series(Op_pred_rfc, dtype="category")				# convert to categor
 category_rfc = ['Idle','LadderClimb','StoneThrow','WireCut']					# define categories
 Op_series_rfc.cat.categories = ["%s" %category_rfc[k] for k in Op_series_rfc.cat.categories]# place proper categories
 my_index = np.arange(elematrix2[0,0],new_row+elematrix2[0,0]) 			        # proper data stored in my_index
-df = pd.DataFrame({'Id':my_index,'SaleStatus':Op_series_rfc})			        # convert to dataframes
+df = pd.DataFrame({'Id':my_index,'Sensor Activity':Op_series_rfc})			        # convert to dataframes
 df.to_csv('out_rfc.csv', encoding='utf-8', index=False)				        # dump values to out_rfc.csv
 
 
